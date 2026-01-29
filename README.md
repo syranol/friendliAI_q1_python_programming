@@ -1,4 +1,4 @@
-# Q1 - dict[str, int] decorator
+# Q1 - Python Programming 
 
 Shared validation decorator for functions that accept `dict[str, int]` across
 API services, data pipelines, CLI tools, and scheduled jobs.
