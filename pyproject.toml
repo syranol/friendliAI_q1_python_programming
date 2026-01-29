@@ -1,0 +1,8 @@
+[project]
+name = "friendliai-q1"
+version = "0.1.0"
+description = "Q1: dict[str, int] decorator"
+requires-python = ">=3.11"
+
+[tool.uv]
+# No dependencies; uv will still create an isolated env for 3.11 when running.
