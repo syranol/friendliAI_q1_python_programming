@@ -50,15 +50,3 @@ def enforce_dict_str_int(func: Callable[P, R]) -> Callable[P, R]:
         return func(*args, **kwargs)
 
     return wrapper
-
-
-@enforce_dict_str_int
-def sum_values(data: dict[str, int]) -> int:
-    """Return the sum of all values in a dict[str, int]."""
-    return sum(data.values())
-
-
-if __name__ == "__main__":
-    print(sum_values({"apples": 0, "bananas": 1}))
-    # Uncomment to see the validation error:
-    # print(sum_values({"bad": True}))
