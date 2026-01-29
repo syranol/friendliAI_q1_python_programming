@@ -1,3 +1,9 @@
+"""Shared decorator for dict[str, int] validation.
+
+Intended consumers include API services, data processing pipelines, CLI tools,
+and scheduled billing jobs within a large monorepo.
+"""
+
 from __future__ import annotations
 
 from functools import wraps
@@ -8,6 +14,7 @@ R = TypeVar("R")
 
 
 def _validate_dict_str_int(value: object, *, where: str) -> None:
+    """Validate that value is dict[str, int], raising TypeError with context."""
     if not isinstance(value, dict):
         raise TypeError(
             f"{where} must be dict[str, int]; got {type(value).__name__}"
@@ -27,11 +34,15 @@ def _validate_dict_str_int(value: object, *, where: str) -> None:
 
 
 def enforce_dict_str_int(func: Callable[P, R]) -> Callable[P, R]:
-    """ Decorator for ensure all positional/keyword args are dict[str, int] before calling func."""
+    """Decorator enforcing dict[str, int] for all args before calling func.
+
+    Raises:
+        TypeError: If any positional or keyword argument is not dict[str, int].
+    """
 
     @wraps(func)
     def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
-        """ Returned function that wraps the original function. """
+        """Return function that wraps the original function."""
         for index, arg in enumerate(args):
             _validate_dict_str_int(arg, where=f"argument at position {index}")
         for name, arg in kwargs.items():
@@ -43,6 +54,7 @@ def enforce_dict_str_int(func: Callable[P, R]) -> Callable[P, R]:
 
 @enforce_dict_str_int
 def sum_values(data: dict[str, int]) -> int:
+    """Return the sum of all values in a dict[str, int]."""
     return sum(data.values())
 
 

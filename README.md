@@ -1,7 +1,8 @@
 # Q1 - dict[str, int] decorator
 
 ## Files
-- `q1_decorator.py` - implementation and a small example
+- `common_lib.py` - shared decorator utility intended for reuse across API services,
+  data processing pipelines, CLI tools, and scheduled billing jobs; includes a small example
 
 ## Run (make)
 ```bash

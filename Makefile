@@ -1,4 +1,4 @@
 .PHONY: run
 
 run:
-	python3.11 q1_decorator.py
+	python3.11 common_lib.py
