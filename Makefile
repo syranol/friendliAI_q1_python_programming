@@ -1,4 +1,9 @@
-.PHONY: run
+.PHONY: venv test
 
-run:
-	python3.11 common_lib.py
+venv:
+	python3.11 -m venv .venv
+
+# Activate with: source .venv/bin/activate
+
+test:
+	python3.11 -m unittest discover -s tests

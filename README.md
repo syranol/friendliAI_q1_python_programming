@@ -1,13 +1,21 @@
 # Q1 - dict[str, int] decorator
 
-## Files
-- `common_lib.py` - shared decorator utility intended for reuse across API services,
-  data processing pipelines, CLI tools, and scheduled billing jobs; includes a small example
+Shared validation decorator for functions that accept `dict[str, int]` across
+API services, data pipelines, CLI tools, and scheduled jobs.
 
-## Run (make)
+## Files
+- `common_lib.py` - shared decorator utility
+- `tests/test_common_lib.py` - unit tests for validation behavior
+
+## Setup (venv)
 ```bash
-cd friendliAI_q1_python_programming
-make run
+make venv
+source .venv/bin/activate
+```
+
+## Run tests (make)
+```bash
+make test
 ```
 
 ## Requirements
@@ -19,4 +27,14 @@ make run
   If you only want to validate a subset of parameters, the decorator can be adapted.
 - `ParamSpec` and `TypeVar` preserve the wrapped function's full signature and return type
   for type checkers, so the decorator doesn't erase parameter/return typing.
-# friendliAI_q1_python_programming
+
+## AI Assistance
+This project was developed with the assistance of an AI coding tool used as a design and review aid, not as an autonomous code generator. I used AI intentionally to research tradeoffs, validate assumptions, and close knowledge gaps while retaining full ownership of the design and implementation. Specifically, I used AI to:
+
+- Validate decorator structure and modern typing patterns (e.g., ParamSpec, TypeVar) against Python 3.11 best practices
+- Evaluate whether a decorator was the appropriate shared utility by comparing alternatives such as inline validation, custom wrapper types, and schema-based approaches (e.g., pydantic-style models)
+- Identify edge cases and subtle language behaviors (such as bool being a subclass of int) to ensure correct and defensive validation logic
+- Refine error messages, docstrings, and API ergonomics to improve developer experience and failure clarity
+- Review workflow scaffolding (Makefile, virtualenv setup, and test commands) to ensure reproducibility and ease of use
+
+Throughout the process, AI was used to surface potential blind spots and prompt deeper investigation, allowing me to fully understand and justify each design choice. All architectural decisions, implementation details, and final edits were made, reviewed, and integrated by me.
