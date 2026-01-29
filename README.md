@@ -18,3 +18,4 @@ make run
   If you only want to validate a subset of parameters, the decorator can be adapted.
 - `ParamSpec` and `TypeVar` preserve the wrapped function's full signature and return type
   for type checkers, so the decorator doesn't erase parameter/return typing.
+# friendliAI_q1_python_programming
