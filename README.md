@@ -8,7 +8,12 @@ API services, data pipelines, CLI tools, and scheduled jobs.
 - `tests/test_common_lib.py` - unit tests for validation behavior
 - `demo.py` - simple demonstration of the decorator on two functions
 
-## Setup (venv)
+## Setup (clone + venv)
+```bash
+git clone https://github.com/syranol/common-lib.git
+cd common-lib
+```
+
 ```bash
 make venv
 source .venv/bin/activate
