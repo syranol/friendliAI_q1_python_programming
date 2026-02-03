@@ -1,4 +1,4 @@
-.PHONY: venv test
+.PHONY: venv test demo
 
 venv:
 	python3.11 -m venv .venv
@@ -7,3 +7,6 @@ venv:
 
 test:
 	python3.11 -m unittest discover -s tests
+
+demo:
+	python3.11 demo.py

@@ -6,6 +6,7 @@ API services, data pipelines, CLI tools, and scheduled jobs.
 ## Files
 - `common_lib.py` - shared decorator utility
 - `tests/test_common_lib.py` - unit tests for validation behavior
+- `demo.py` - simple demonstration of the decorator on two functions
 
 ## Setup (venv)
 ```bash
@@ -13,10 +14,37 @@ make venv
 source .venv/bin/activate
 ```
 
+## Run demo
+```bash
+make demo
+```
+
+Expected output (with the invalid case still commented):
+```
+Demo 1 — single positional argument
+  sum_values({'apples': 2, 'oranges': 3}) -> 5
+
+Demo 2 — multiple arguments incl. kwargs
+  merge_counts({'apples': 2, 'oranges': 3}, b={'apples': 1}) -> {'apples': 3, 'oranges': 3}
+```
+
+If you uncomment the invalid example in `demo.py`, you'll see the decorator raise:
+```
+Traceback (most recent call last):
+  File "demo.py", line 35, in main
+    print(" sum_values({'apples': True}) ->", sum_values(bad))
+  File "common_lib.py", line 47, in wrapper
+    _validate_dict_str_int(arg, where=f"argument at position {index}")
+  File "common_lib.py", line 30, in _validate_dict_str_int
+    raise TypeError(
+TypeError: argument at position 0 key 'apples' has non-int value True (type bool)
+```
+
 ## Run tests (make)
 ```bash
 make test
 ```
+
 
 ## Requirements
 - Python 3.11 available as `python3.11`
